@@ -30,7 +30,7 @@
             Controlling compiler flags
             Setting the standard for the language
             Using control flow constructs
-            
+
 - 02. Detecting The Environment
            
             Discovering the operating system
@@ -183,4 +183,4 @@
             Recommendation for tests
             Porting install targets
             Further steps
-            Summary and common pitfalls when converting projects to CMake
+                  and common pitfalls when converting projects to CMake

@@ -10770,8 +10770,8 @@ namespace Catch {
         }
         void testGroupEnded( TestGroupStats const& _testGroupStats ) override {
             if( currentGroupInfo.used ) {
-                printSummaryDivider();
-                stream << "Summary for group '" << _testGroupStats.groupInfo.name << "':\n";
+                print     Divider();
+                stream << "      for group '" << _testGroupStats.groupInfo.name << "':\n";
                 printTotals( _testGroupStats.totals );
                 stream << '\n' << std::endl;
             }
@@ -11011,13 +11011,13 @@ namespace Catch {
             stream << Column( _string ).indent( indent+i ).initialIndent( indent ) << '\n';
         }
 
-        struct SummaryColumn {
+        struct      Column {
 
-            SummaryColumn( std::string const& _label, Colour::Code _colour )
+                 Column( std::string const& _label, Colour::Code _colour )
             :   label( _label ),
                 colour( _colour )
             {}
-            SummaryColumn addRow( std::size_t count ) {
+                 Column addRow( std::size_t count ) {
                 std::ostringstream oss;
                 oss << count;
                 std::string row = oss.str();
@@ -11050,25 +11050,25 @@ namespace Catch {
             }
             else {
 
-                std::vector<SummaryColumn> columns;
-                columns.push_back( SummaryColumn( "", Colour::None )
+                std::vector<     Column> columns;
+                columns.push_back(      Column( "", Colour::None )
                                         .addRow( totals.testCases.total() )
                                         .addRow( totals.assertions.total() ) );
-                columns.push_back( SummaryColumn( "passed", Colour::Success )
+                columns.push_back(      Column( "passed", Colour::Success )
                                         .addRow( totals.testCases.passed )
                                         .addRow( totals.assertions.passed ) );
-                columns.push_back( SummaryColumn( "failed", Colour::ResultError )
+                columns.push_back(      Column( "failed", Colour::ResultError )
                                         .addRow( totals.testCases.failed )
                                         .addRow( totals.assertions.failed ) );
-                columns.push_back( SummaryColumn( "failed as expected", Colour::ResultExpectedFailure )
+                columns.push_back(      Column( "failed as expected", Colour::ResultExpectedFailure )
                                         .addRow( totals.testCases.failedButOk )
                                         .addRow( totals.assertions.failedButOk ) );
 
-                printSummaryRow( "test cases", columns, 0 );
-                printSummaryRow( "assertions", columns, 1 );
+                print     Row( "test cases", columns, 0 );
+                print     Row( "assertions", columns, 1 );
             }
         }
-        void printSummaryRow( std::string const& label, std::vector<SummaryColumn> const& cols, std::size_t row ) {
+        void print     Row( std::string const& label, std::vector<     Column> const& cols, std::size_t row ) {
             for( auto col : cols ) {
                 std::string value = col.rows[row];
                 if( col.label.empty() ) {
@@ -11109,7 +11109,7 @@ namespace Catch {
             }
             stream << '\n';
         }
-        void printSummaryDivider() {
+        void print     Divider() {
             stream << getLineOfChars<'-'>() << '\n';
         }
 
