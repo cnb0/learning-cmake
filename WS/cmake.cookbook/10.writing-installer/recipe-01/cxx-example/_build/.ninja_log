@@ -1,0 +1,6 @@
+# ninja log v5
+0	192	1636193424189693981	src/CMakeFiles/message-shared.dir/Message.cpp.o	b608454f0709ed5e
+0	196	1636193424193693974	src/CMakeFiles/hello-world_wDSO.dir/hello-world.cpp.o	92c06246cc24a28c
+192	222	1636193424217693932	lib/libmessage.so.1	3bcd2a04ac65b102
+222	228	1636193424217693932	lib/libmessage.so	4231b46b734bbce8
+228	260	1636193424257693861	bin/hello-world_wDSO	8e4778a387b00c0c
